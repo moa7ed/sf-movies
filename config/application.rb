@@ -31,5 +31,8 @@ module SfMovies
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Data SF app-tokens
+    config.movie_locations_app_token = "0N8nu3EzU3P7PUd2PMmrz4RJX"
   end
 end
