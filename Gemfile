@@ -45,6 +45,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'soda-ruby', '~> 0.2.25'
+  gem 'geocoder', '~> 1.5.0'
 end
 
 group :test do
