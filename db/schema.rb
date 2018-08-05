@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180804235204) do
   create_table "actors_movies", id: false, force: :cascade do |t|
     t.integer "movie_id", null: false
     t.integer "actor_id", null: false
+    t.index ["movie_id", "actor_id"], name: "index_actors_movies_on_movie_id_and_actor_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -36,6 +37,8 @@ ActiveRecord::Schema.define(version: 20180804235204) do
   create_table "locations_movies", id: false, force: :cascade do |t|
     t.integer "movie_id",    null: false
     t.integer "location_id", null: false
+    t.index ["location_id", "movie_id"], name: "index_locations_movies_on_location_id_and_movie_id"
+    t.index ["movie_id", "location_id"], name: "index_locations_movies_on_movie_id_and_location_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -51,6 +54,7 @@ ActiveRecord::Schema.define(version: 20180804235204) do
   create_table "movies_production_companies", id: false, force: :cascade do |t|
     t.integer "movie_id",              null: false
     t.integer "production_company_id", null: false
+    t.index ["movie_id", "production_company_id"], name: "short_name_for_movie_production_company_index"
   end
 
   create_table "production_companies", force: :cascade do |t|
