@@ -68,6 +68,7 @@ GEM
     geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     hashie (3.5.7)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
@@ -202,6 +203,7 @@ DEPENDENCIES
   factory_bot_rails (~> 4.0)
   faker
   geocoder (~> 1.5.0)
+  gmaps4rails (~> 2.1.2)
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 5.0.7)
