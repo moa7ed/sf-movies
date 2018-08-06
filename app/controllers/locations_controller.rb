@@ -6,6 +6,7 @@ class LocationsController < ApplicationController
     @markers = Gmaps4rails.build_markers(@locations) do |location, marker|
       marker.lat location.lat
       marker.lng location.long
+      marker.infowindow location.movies.all.map(&:title).join("<br />")
     end
   end
 
