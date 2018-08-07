@@ -24,6 +24,6 @@ class Location < ApplicationRecord
     maxLat = 37.82
     minLong = -122.51
     maxLong = -122.35
-    lat < maxLat && lat > minLat && long < maxLong && long > minLong
+    lat.present? && long.present? && lat < maxLat && lat > minLat && long < maxLong && long > minLong
   end
 end
