@@ -12,17 +12,20 @@
 
 ActiveRecord::Schema.define(version: 20180804235204) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "actors", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_actors_on_name", unique: true
+    t.index ["name"], name: "index_actors_on_name", unique: true, using: :btree
   end
 
   create_table "actors_movies", id: false, force: :cascade do |t|
     t.integer "movie_id", null: false
     t.integer "actor_id", null: false
-    t.index ["movie_id", "actor_id"], name: "index_actors_movies_on_movie_id_and_actor_id"
+    t.index ["movie_id", "actor_id"], name: "index_actors_movies_on_movie_id_and_actor_id", using: :btree
   end
 
   create_table "locations", force: :cascade do |t|
@@ -31,14 +34,13 @@ ActiveRecord::Schema.define(version: 20180804235204) do
     t.float    "long"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address"], name: "index_locations_on_address", unique: true
+    t.index ["address"], name: "index_locations_on_address", unique: true, using: :btree
   end
 
   create_table "locations_movies", id: false, force: :cascade do |t|
     t.integer "movie_id",    null: false
     t.integer "location_id", null: false
-    t.index ["location_id", "movie_id"], name: "index_locations_movies_on_location_id_and_movie_id"
-    t.index ["movie_id", "location_id"], name: "index_locations_movies_on_movie_id_and_location_id"
+    t.index ["movie_id", "location_id"], name: "index_locations_movies_on_movie_id_and_location_id", using: :btree
   end
 
   create_table "movies", force: :cascade do |t|
@@ -48,20 +50,20 @@ ActiveRecord::Schema.define(version: 20180804235204) do
     t.string   "writer"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["title"], name: "index_movies_on_title", unique: true
+    t.index ["title"], name: "index_movies_on_title", unique: true, using: :btree
   end
 
   create_table "movies_production_companies", id: false, force: :cascade do |t|
     t.integer "movie_id",              null: false
     t.integer "production_company_id", null: false
-    t.index ["movie_id", "production_company_id"], name: "short_name_for_movie_production_company_index"
+    t.index ["movie_id", "production_company_id"], name: "short_name_for_movie_production_company_index", using: :btree
   end
 
   create_table "production_companies", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_production_companies_on_name", unique: true
+    t.index ["name"], name: "index_production_companies_on_name", unique: true, using: :btree
   end
 
 end
