@@ -3,19 +3,23 @@ class Location < ApplicationRecord
 
   def self.filter (movie_names, address)
     locations = []
-    Location.all.each do |l|
-      movies = []
-      l.movies.each do |m|
-        movies << m if (movie_names.map(&:downcase).include? m.title.downcase)
+    if movie_names.present?
+      Location.all.each do |l|
+        movies = []
+        l.movies.each do |m|
+          movies << m if (movie_names.map(&:downcase).include? m.title.downcase)
+        end
+        if movies.count > 0
+          new_location = l.clone
+          new_location.movies = movies
+          locations << new_location
+        end
       end
-      if movies.count > 0
-        new_location = l.clone
-        new_location.movies = movies
-        locations << new_location
-      end
+    else
+      locations = Location.all
     end
     locations = locations.select { |l| l.lat.present? && l.in_san_francisco? }
-    locations = locations.select { |l| l.address.downcase.include?(address.downcase) } if address.present?
+    locations = locations.select { |l| l.address.downcase.include? (address.downcase) } if address.present?
     locations
   end
 

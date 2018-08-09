@@ -13,7 +13,7 @@ class LocationsController < ApplicationController
   end
 
   def search
-    @locations = Location.all.select {|l| l.in_san_francisco? && (l.address.include? params[:q]) }[0..4]
+    @locations = Location.all.select {|l| l.in_san_francisco? && (l.address&.downcase.include? (params[:q]&.downcase || "")) }[0..4]
     render json: @locations.map {|l| {"address": l.address}}.to_a
   end
 

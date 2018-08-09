@@ -28,6 +28,7 @@ namespace :filling_data do
           if location.lat.blank?
             puts "retrieving lat and long for studio (#{movie_location})"
             coordinates = Geocoder.search(movie_location)&.first&.coordinates
+            next if coordinates.blank?
             location.lat = coordinates&.first
             location.long = coordinates&.last
           end
