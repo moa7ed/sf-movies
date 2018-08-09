@@ -23,6 +23,7 @@ class Location < ApplicationRecord
     locations
   end
 
+
   def in_san_francisco?
     minLat = 37.7
     maxLat = 37.82
