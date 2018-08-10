@@ -13,8 +13,8 @@
   <%= label_tag(:director, "Director") %>
   <%= text_field_tag(:director) %>
   
-  <%= label_tag(:wrtier, "Wrtier") %>
-  <%= text_field_tag(:wrtier) %>
+  <%= label_tag(:writer, "Writer") %>
+  <%= text_field_tag(:writer) %>
   
   <%= label_tag(:actor, "Actor") %>
   <%= text_field_tag(:actor) %>
@@ -68,7 +68,7 @@ options.url = function(phrase){
   return "/movies/search_for_writers.json?q=" + phrase
 }
 options.getValue = "writer";
-$("#wrtier").easyAutocomplete(options);
+$("#writer").easyAutocomplete(options);
 
 options.url = function(phrase){
   return "/actors/search.json?q=" + phrase
