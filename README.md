@@ -84,3 +84,11 @@ I didn't do that as I afraid to exceeds free-tier limits.
 - the page also contains list of filteration boxes with (`and`) condition which means it is better to search with one attribute at a time to find results
 - all text fileds support autocomplete
 - after add some values to the text fileds click on search
+
+## My code
+I used Rails with alot of built-in code, to identify code written by me, ignore the first commit
+
+## Skipped
+I skipped some points as I don't have enough time:
+- proper integration testing
+- Production-readiness: like monitoring, logging and proper error handling
